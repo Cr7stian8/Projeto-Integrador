@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -17,23 +17,23 @@ public class Categoria {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
 	// Usar long minusculo em tudo
-	private long idCategoria;
+	private Long idCategoria;
 
-	@NotBlank
+	@NotNull
 	@Size(min = 0, max = 255)
 	private String tipoCategoria;
-	@NotBlank
+	@NotNull
 	@Size(min = 0, max = 255)
 	private String tamanhoCategoria;
-	@NotBlank
-	private boolean alimenticiaCategoria;
+	@NotNull
+	private Boolean alimenticiaCategoria;
 
 	// Criando Getters and setters
-	public long getIdCategoria() {
+	public Long getIdCategoria() {
 		return idCategoria;
 	}
 
-	public void setIdCategoria(long idCategoria) {
+	public void setIdCategoria(Long idCategoria) {
 		this.idCategoria = idCategoria;
 	}
 
@@ -53,11 +53,11 @@ public class Categoria {
 		this.tamanhoCategoria = tamanhoCategoria;
 	}
 
-	public boolean isAlimenticiaCategoria() {
+	public Boolean isAlimenticiaCategoria() {
 		return alimenticiaCategoria;
 	}
 
-	public void setAlimenticiaCategoria(boolean alimenticiaCategoria) {
+	public void setAlimenticiaCategoria(Boolean alimenticiaCategoria) {
 		this.alimenticiaCategoria = alimenticiaCategoria;
 	}
 
