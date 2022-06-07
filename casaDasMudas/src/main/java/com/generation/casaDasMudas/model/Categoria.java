@@ -1,12 +1,18 @@
 package com.generation.casaDasMudas.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_categoria")
@@ -16,7 +22,7 @@ public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
-	// Usar long minusculo em tudo
+	// Usar long maiusculo em tudo
 	private Long idCategoria;
 
 	@NotNull
@@ -28,6 +34,11 @@ public class Categoria {
 	@NotNull
 	private Boolean alimenticiaCategoria;
 
+	//Criando chave
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("categoria")
+	private List<Produto> produto;
+	
 	// Criando Getters and setters
 	public Long getIdCategoria() {
 		return idCategoria;
@@ -61,4 +72,15 @@ public class Categoria {
 		this.alimenticiaCategoria = alimenticiaCategoria;
 	}
 
+	public List<Produto> getProduto() {
+		return produto;
+	}
+
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
+	}
+
+	public Boolean getAlimenticiaCategoria() {
+		return alimenticiaCategoria;
+	}
 }

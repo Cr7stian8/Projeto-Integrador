@@ -4,9 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_produto")
@@ -39,6 +42,17 @@ public class Produto {
 	@Size(min=5,max=500)
 	private String enderecoProduto;
 
+	//Criando chaves 
+	@ManyToOne
+	@JsonIgnoreProperties("produto")
+	private Categoria categoria;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("produto")
+	private Usuario usuario;
+	
+	// Getters and settes
+	
 	public Long getIdProduto() {
 		return idProduto;
 	}
@@ -94,12 +108,20 @@ public class Produto {
 	public void setEnderecoProduto(String enderecoProduto) {
 		this.enderecoProduto = enderecoProduto;
 	}
-	
-	//private Long idUsuario;
-	
-	//private Long idCategoria;
-	
-	
-	
-	
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 }
