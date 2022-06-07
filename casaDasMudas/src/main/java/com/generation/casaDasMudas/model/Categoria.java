@@ -15,7 +15,7 @@ public class Categoria {
 	// Criando chave primária
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
+
 	// Usar long minusculo em tudo
 	private Long idCategoria;
 
