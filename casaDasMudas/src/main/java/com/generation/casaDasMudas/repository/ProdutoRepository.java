@@ -1,4 +1,4 @@
-package com.generation.casaDasMudas.model.repository;
+package com.generation.casaDasMudas.repository;
 
 import java.util.List;
 

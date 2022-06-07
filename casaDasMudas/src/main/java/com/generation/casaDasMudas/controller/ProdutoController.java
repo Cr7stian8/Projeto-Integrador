@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.casaDasMudas.model.Produto;
-import com.generation.casaDasMudas.model.repository.ProdutoRepository;
+import com.generation.casaDasMudas.repository.ProdutoRepository;
 
 @RestController
 @RequestMapping("/produto")
