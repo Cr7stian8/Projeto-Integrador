@@ -1,6 +1,7 @@
 package com.generation.casaDasMudas.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -18,15 +19,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.casaDasMudas.model.Usuario;
+import com.generation.casaDasMudas.model.UsuarioLogin;
 import com.generation.casaDasMudas.repository.UsuarioRepository;
+import com.generation.casaDasMudas.service.UsuarioService;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping("/usuarios")
+@RequestMapping("/usuario")
 public class UsuarioController {
 
 	@Autowired
 	private UsuarioRepository repository;
+	
+	@Autowired
+	private UsuarioService oUser;
 	
 	@GetMapping
 	public ResponseEntity<List<Usuario>> listar(){
@@ -44,12 +50,12 @@ public class UsuarioController {
 	public ResponseEntity<List<Usuario>> buscarNome(@PathVariable String nomeUsuario){
 		return ResponseEntity.ok(repository.findAllByNomeUsuarioContainingIgnoreCase(nomeUsuario));
 	}
-	
+	/*
 	@PostMapping
 	public ResponseEntity<Usuario> cadastrar(@Valid @RequestBody Usuario oUsuario){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(oUsuario));
 	}
-	
+	*/
 	@PutMapping
 	public ResponseEntity<Usuario> alterar(@Valid @RequestBody Usuario oUsuario){
 		return ResponseEntity.ok(repository.save(oUsuario));
@@ -58,5 +64,17 @@ public class UsuarioController {
 	@DeleteMapping("/{idUsuario}")
 	public void deletar(@PathVariable Long idUsuario) {
 		repository.deleteById(idUsuario);
+	}
+	
+	@PostMapping("/logar")
+	public ResponseEntity<UsuarioLogin> Autentication(@Valid @RequestBody Optional<UsuarioLogin> user){
+		return oUser.Logar(user).map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+	}
+	
+	@PostMapping("/cadastrar")
+	public ResponseEntity<Usuario> post(@Valid @RequestBody Usuario oUsuario){
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(oUser.cadastrarUsuario(oUsuario));
 	}
 }
