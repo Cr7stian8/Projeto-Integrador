@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -24,19 +22,18 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idUsuario;
 	
-	@NotBlank
+	@NotNull
 	@Size(min=1, max = 255)
 	private String nomeUsuario;
 	
 	@NotNull
-	@Email
 	private String emailUsuario;
 	
-	@NotBlank
+	@NotNull
 	@Size(min=8, max = 255)
 	private String senhaUsuario;
 	
-	@NotBlank
+	@NotNull
 	@Size(min=1, max = 255)
 	private String fotoUsuario;
 

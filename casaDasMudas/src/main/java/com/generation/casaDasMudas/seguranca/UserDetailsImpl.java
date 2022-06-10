@@ -1,6 +1,7 @@
 package com.generation.casaDasMudas.seguranca;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +13,7 @@ public class UserDetailsImpl implements UserDetails{
 	private static final long serialVersionUID = 1L;
 	private String userName;
 	private String password;
+	private List<GrantedAuthority> authorities;
 	
 	public UserDetailsImpl(Usuario oUser) {
 		this.userName = oUser.getEmailUsuario();
@@ -22,7 +24,7 @@ public class UserDetailsImpl implements UserDetails{
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return null;
+		return authorities;
 	}
 
 	@Override

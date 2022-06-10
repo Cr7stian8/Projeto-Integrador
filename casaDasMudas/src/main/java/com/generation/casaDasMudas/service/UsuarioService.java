@@ -37,7 +37,6 @@ public class UsuarioService {
 		if(oUsuario.isPresent()) {
 			if(encoder.matches(oUser.get().getSenhaLogin(), oUsuario.get().getSenhaUsuario())) { 	// comparando senhas, a que pega no 
 																									//banco de dados e a que o usuário digita
-				
 				String auth = oUser.get().getUsuarioLogin() + ":" + oUser.get().getSenhaLogin();
 				byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
 				String authHeader = "Basic " + new String (encodedAuth);
