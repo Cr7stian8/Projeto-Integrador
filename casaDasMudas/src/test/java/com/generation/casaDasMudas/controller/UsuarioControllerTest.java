@@ -195,7 +195,7 @@ public class UsuarioControllerTest {
 
 		// Buscando pelo usuário cadastrado
 		ResponseEntity<String> resposta = testRestTemplate.withBasicAuth("root", "root")
-				.exchange("/" + usuarioBusca.get().getIdUsuario(), HttpMethod.GET, null, String.class);
+				.exchange("/usuario/" + usuarioBusca.get().getIdUsuario(), HttpMethod.GET, null, String.class);
 
 		// Verificando se encontrou o usuário e retornando o status
 		assertEquals(HttpStatus.OK, resposta.getStatusCode());
