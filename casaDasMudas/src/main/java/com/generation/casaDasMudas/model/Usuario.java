@@ -18,6 +18,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "tb_usuario")
 public class Usuario {
 	
+	public Usuario(Long idUsuario, @NotNull @Size(min = 1, max = 255) String nomeUsuario, @NotNull String emailUsuario,
+			@NotNull @Size(min = 8, max = 255) String senhaUsuario,
+			@NotNull @Size(min = 1, max = 255) String fotoUsuario) {
+		super();
+		this.idUsuario = idUsuario;
+		this.nomeUsuario = nomeUsuario;
+		this.emailUsuario = emailUsuario;
+		this.senhaUsuario = senhaUsuario;
+		this.fotoUsuario = fotoUsuario;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idUsuario;

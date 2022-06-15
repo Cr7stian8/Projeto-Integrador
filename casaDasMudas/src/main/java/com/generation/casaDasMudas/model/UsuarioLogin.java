@@ -1,16 +1,36 @@
 package com.generation.casaDasMudas.model;
 
 public class UsuarioLogin {
-	
+
+	private Long idLogin;
+
 	private String nomeLogin;
-	
+
 	private String usuarioLogin;
-	
+
 	private String senhaLogin;
-	
+
 	private String tokenLogin;
-	
+
 	private String fotoLogin;
+
+	public Long getIdLogin() {
+		return idLogin;
+	}
+
+	public UsuarioLogin(Long idLogin, String nomeLogin, String usuarioLogin, String senhaLogin, String tokenLogin,
+			String fotoLogin) {
+		this.idLogin = idLogin;
+		this.nomeLogin = nomeLogin;
+		this.usuarioLogin = usuarioLogin;
+		this.senhaLogin = senhaLogin;
+		this.tokenLogin = tokenLogin;
+		this.fotoLogin = fotoLogin;
+	}
+
+	public void setIdLogin(Long idLogin) {
+		this.idLogin = idLogin;
+	}
 
 	public String getNomeLogin() {
 		return nomeLogin;
@@ -51,5 +71,5 @@ public class UsuarioLogin {
 	public void setFotoLogin(String fotoLogin) {
 		this.fotoLogin = fotoLogin;
 	}
-	
+
 }

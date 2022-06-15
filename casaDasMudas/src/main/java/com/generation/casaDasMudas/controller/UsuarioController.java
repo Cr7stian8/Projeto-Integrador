@@ -74,7 +74,8 @@ public class UsuarioController {
 	
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Usuario> post(@Valid @RequestBody Usuario oUsuario){
-		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(oUser.cadastrarUsuario(oUsuario));
+		return oUser.cadastrarUsuario(oUsuario)
+	            .map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(resposta))
+	            .orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 }
