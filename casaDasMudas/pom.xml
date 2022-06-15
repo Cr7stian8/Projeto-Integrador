@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.generation</groupId>
-	<artifactId>blogpessoal</artifactId>
+	<artifactId>casaDasMudas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>blogpessoal</name>
-	<description>Demo project for Spring Boot</description>
+	<name>CASA DAS MUDAS</name>
+	<description>Projeto Integrador desenvolvido durante o bootcamp da Generation</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
