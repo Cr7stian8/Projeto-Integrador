@@ -34,7 +34,7 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService oUser;
 	
-	@GetMapping
+	@GetMapping("/all")
 	public ResponseEntity<List<Usuario>> listar(){
 		return ResponseEntity.ok(repository.findAll());
 	}
@@ -56,7 +56,7 @@ public class UsuarioController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(oUsuario));
 	}
 	*/
-	@PutMapping
+	@PutMapping("/atualizar")
 	public ResponseEntity<Usuario> alterar(@Valid @RequestBody Usuario oUsuario){
 		return ResponseEntity.ok(repository.save(oUsuario));
 	}

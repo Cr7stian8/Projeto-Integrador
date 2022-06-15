@@ -62,7 +62,7 @@ public class UsuarioControllerTest {
 				));
 
 		// Cadastrando o usuário
-		ResponseEntity<Usuario> corpoResposta = testRestTemplate.exchange("/usuarios/cadastrar", HttpMethod.POST,
+		ResponseEntity<Usuario> corpoResposta = testRestTemplate.exchange("/usuario/cadastrar", HttpMethod.POST,
 				corpoRequisicao, Usuario.class);
 
 		// Verificando se o usuário foi criado
@@ -99,7 +99,7 @@ public class UsuarioControllerTest {
 				));
 
 		// Tentando cadastrar usuário já cadastrado
-		ResponseEntity<Usuario> corpoResposta = testRestTemplate.exchange("/usuarios/cadastrar", HttpMethod.POST,
+		ResponseEntity<Usuario> corpoResposta = testRestTemplate.exchange("/usuario/cadastrar", HttpMethod.POST,
 				corpoRequisicao, Usuario.class);
 
 		// Testando se o banco de dados está retornando um status de erro e retornando
@@ -135,7 +135,7 @@ public class UsuarioControllerTest {
 
 		// Utilizando método put para atualizar os dados
 		ResponseEntity<Usuario> corpoResposta = testRestTemplate.withBasicAuth("root", "root")
-				.exchange("/usuarios/atualizar", HttpMethod.PUT, corpoRequisicao, Usuario.class);
+				.exchange("/usuario/atualizar", HttpMethod.PUT, corpoRequisicao, Usuario.class);
 
 		// Verificando se a atualização funcionou e retornando um status
 		assertEquals(HttpStatus.OK, corpoResposta.getStatusCode());
@@ -170,7 +170,7 @@ public class UsuarioControllerTest {
 				));
 
 		// Realizando método get para cadastrar usuário
-		ResponseEntity<String> resposta = testRestTemplate.withBasicAuth("root", "root").exchange("/usuarios/all",
+		ResponseEntity<String> resposta = testRestTemplate.withBasicAuth("root", "root").exchange("/usuario/all",
 				HttpMethod.GET, null, String.class);
 
 		// Retornando status ok caso tenha dado certo
@@ -195,7 +195,7 @@ public class UsuarioControllerTest {
 
 		// Buscando pelo usuário cadastrado
 		ResponseEntity<String> resposta = testRestTemplate.withBasicAuth("root", "root")
-				.exchange("/usuarios/" + usuarioBusca.get().getIdUsuario(), HttpMethod.GET, null, String.class);
+				.exchange("/" + usuarioBusca.get().getIdUsuario(), HttpMethod.GET, null, String.class);
 
 		// Verificando se encontrou o usuário e retornando o status
 		assertEquals(HttpStatus.OK, resposta.getStatusCode());
@@ -229,7 +229,7 @@ public class UsuarioControllerTest {
 						));
 
 		// Usando o corpo da requisição para realizar o login do usuário
-		ResponseEntity<UsuarioLogin> corpoResposta = testRestTemplate.exchange("/usuarios/logar", HttpMethod.POST,
+		ResponseEntity<UsuarioLogin> corpoResposta = testRestTemplate.exchange("/usuario/logar", HttpMethod.POST,
 				corpoRequisicao, UsuarioLogin.class);
 
 		// Verificando se o status code ok está correto
