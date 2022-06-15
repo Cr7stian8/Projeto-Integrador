@@ -14,10 +14,6 @@ public class UsuarioLogin {
 
 	private String fotoLogin;
 
-	public Long getIdLogin() {
-		return idLogin;
-	}
-
 	public UsuarioLogin(Long idLogin, String nomeLogin, String usuarioLogin, String senhaLogin, String tokenLogin,
 			String fotoLogin) {
 		this.idLogin = idLogin;
@@ -27,7 +23,13 @@ public class UsuarioLogin {
 		this.tokenLogin = tokenLogin;
 		this.fotoLogin = fotoLogin;
 	}
+	
+	public UsuarioLogin() {	}
 
+	public Long getIdLogin() {
+		return idLogin;
+	}
+	
 	public void setIdLogin(Long idLogin) {
 		this.idLogin = idLogin;
 	}
